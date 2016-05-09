@@ -2,4 +2,4 @@
 Java Socket Learning at KMA
 
 #### Sent file socket.
-[./send_file_socket](Send file socket project)
+[Send file socket project](./send_file_socket)
