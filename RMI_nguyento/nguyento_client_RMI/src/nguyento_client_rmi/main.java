@@ -26,7 +26,7 @@ public class main extends javax.swing.JFrame {
      * Creates new form main
      */
     private Registry registry;
-    
+
     public main() {
         initComponents();
     }
@@ -113,33 +113,29 @@ public class main extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Please input a number");
             tfNumber.requestFocus();
         } else {
-            
+
             int n;
-            try{
-                 n = Integer.parseInt(tfNumber.getText());
-                 registry = LocateRegistry.getRegistry("localhost", 6969);
-                 tool.toolInterface tool = (toolInterface) registry.lookup("tool");
-                 String result ="";
-                 ArrayList list = tool.generate(n);
-                 System.out.println(list.size());
-                 if(list.size() == 0){
-                     tfResult.append("Not allow\n");
-                 }
-                
-                 else{
-                     for (int i = 0; i < list.size(); i++) {
-                     result = result + list.get(i)+"  ";
+            try {
+                n = Integer.parseInt(tfNumber.getText());
+                registry = LocateRegistry.getRegistry("localhost", 6969);
+                tool.toolInterface tool = (toolInterface) registry.lookup("tool");
+                String result = "";
+                ArrayList list = tool.generate(n);
+                System.out.println(list.size());
+                if (list.size() == 0) {
+                    tfResult.append("Not allow\n");
+                } else {
+                    for (int i = 0; i < list.size(); i++) {
+                        result = result + list.get(i) + "  ";
+                    }
+                    tfResult.append(result + "\n");
                 }
-                 tfResult.append(result+"\n"); 
-                 }
-                 
-                
-                 
-            }catch(NumberFormatException e){
-                 JOptionPane.showMessageDialog(null, "Please input a number");
+
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "Please input a number");
                 tfNumber.requestFocus();
             } catch (RemoteException | NotBoundException ex) {
-               JOptionPane.showMessageDialog(null, "Server Failed");
+                JOptionPane.showMessageDialog(null, "Server Failed");
             }
         }
     }//GEN-LAST:event_jButton1ActionPerformed

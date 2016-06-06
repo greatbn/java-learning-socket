@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package nguyento_server_rmi;
 
 import java.rmi.RemoteException;
@@ -24,13 +23,13 @@ public class main extends javax.swing.JFrame {
      */
     private Registry registry;
     private int port = 6969;
-   
+
     public main() {
         initComponents();
         try {
             registry = LocateRegistry.createRegistry(port);
             System.out.println("ok");
-            
+
         } catch (RemoteException ex) {
             Logger.getLogger(main.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -111,30 +110,30 @@ public class main extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btStartActionPerformed
-        try{
+        try {
             registry.rebind("tool", new tool());
             tfResult.append("Server running\n");
             btStart.setEnabled(false);
             btStop.setEnabled(true);
-        }catch(Exception e){
+        } catch (Exception e) {
             System.out.println("Lỗi");
         }
-        
+
     }//GEN-LAST:event_btStartActionPerformed
 
     private void btStopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btStopActionPerformed
-       try{
-           registry.unbind("tool");
-           tfResult.append("Server suspend\n");
-           btStart.setEnabled(true);
+        try {
+            registry.unbind("tool");
+            tfResult.append("Server suspend\n");
+            btStart.setEnabled(true);
             btStop.setEnabled(false);
-       }catch(Exception e){
-           System.out.println("lỗi");
-       }
+        } catch (Exception e) {
+            System.out.println("lỗi");
+        }
     }//GEN-LAST:event_btStopActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-       System.exit(0);
+        System.exit(0);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
